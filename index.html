@@ -882,6 +882,71 @@
       }
     }
 
+    /* Mermaid Diagrams Section */
+    .mermaid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .mermaid-diagram {
+      background: white;
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--panel-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .mermaid-diagram:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .mermaid-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .mermaid-iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      margin-bottom: 1rem;
+    }
+    
+    .mermaid-link {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--primary-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .mermaid-link:hover {
+      background: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 992px) {
+      .mermaid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -899,8 +964,29 @@
         <div class="ecosystem-diagram">
             <svg width="800" height="600"></svg>
            
-          </div>
+        </div>
          
+        <!-- Add Mermaid Diagrams -->
+        <h3 class="layer-subtitle" style="text-align: center; margin-top: 3rem; color: var(--primary-color);">
+          <i class="fas fa-project-diagram"></i> Education Flow & Architecture Diagrams
+        </h3>
+        <div class="mermaid-container">
+          <div class="mermaid-diagram">
+            <h4 class="mermaid-title">Digital Education Flow</h4>
+            <img src="10.png" alt="Digital Education Flow Diagram" style="width: 100%; height: auto; border-radius: var(--border-radius); margin-bottom: 1rem;">
+            <a href="https://www.mermaidchart.com/raw/b78846e6-486f-4763-87a0-df253a94badf?theme=light&version=v0.1&format=svg" target="_blank" class="mermaid-link">
+              <i class="fas fa-external-link-alt"></i> View Full Diagram
+            </a>
+          </div>
+          
+          <div class="mermaid-diagram">
+            <h4 class="mermaid-title">Education Infrastructure Architecture</h4>
+            <img src="11.png" alt="Education Infrastructure Architecture Diagram" style="width: 100%; height: auto; border-radius: var(--border-radius); margin-bottom: 1rem;">
+            <a href="https://www.mermaidchart.com/raw/4c814f7a-23ca-4356-acf2-2ce9ecef5f01?theme=light&version=v0.1&format=svg" target="_blank" class="mermaid-link">
+              <i class="fas fa-external-link-alt"></i> View Full Diagram
+            </a>
+          </div>
+        </div>
       </section>
       <div class="tooltip" id="tooltip"></div>
       <script>
@@ -1710,7 +1796,6 @@
         createEADiagram();
       });
       
-      // Fix comic panel interaction
       document.querySelectorAll('.comic-panel').forEach(panel => {
         panel.addEventListener('click', function() {
           const panelNumber = this.getAttribute('data-panel');
@@ -1726,8 +1811,7 @@
           document.getElementById('component-modal').style.display = 'flex';
         });
       });
-      
-      // Make sure modal close buttons work
+    
       document.querySelector('.modal-close').addEventListener('click', function() {
         document.getElementById('component-modal').style.display = 'none';
       });
